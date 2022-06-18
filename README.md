@@ -1,2 +1,2 @@
 # F-Key
-test
+When the player use Sneak+F, then send the command to player. 
