@@ -1,0 +1,9 @@
+name: F-Key
+version: '${project.version}'
+main: me.FKey.fkey
+api-version: 1.13
+description: A
+
+commands:
+  FKey:
+    description: View the Commands.
