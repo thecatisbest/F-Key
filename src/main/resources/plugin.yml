@@ -2,7 +2,7 @@ name: F-Key
 version: '${project.version}'
 main: me.FKey.fkey
 api-version: 1.13
-description: A
+description: When the player use Sneak+F, then send the command to player.
 
 commands:
   FKey:
