@@ -1,18 +1,19 @@
 package me.FKey.Command;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import java.io.File;
+
 
 public class Commands implements CommandExecutor {
 
+
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
         if (label.equalsIgnoreCase("FKey")) {
             if (!(sender instanceof Player)) {
                 //console
@@ -27,16 +28,20 @@ public class Commands implements CommandExecutor {
             }
             if (args.length >= 1) {
                 if (args[0].equalsIgnoreCase("reload")) {
-                    player.sendMessage(ChatColor.GREEN + "Use " + ChatColor.YELLOW + "/plugman reload F-Key " + ChatColor.GREEN + "if you have this plugin!");
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aStarting reload... &e(If not working download Plugman plugin)"));
+                    player.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "plugman reload F-Key");
                     return true;
                 }
                 if (args[0].equalsIgnoreCase("help")) {
-                    player.sendMessage(ChatColor.AQUA + "[F-Key] commands");
-                    player.sendMessage(ChatColor.GREEN + "Thank you for using my plugin! (●'◡'●)");
-                    player.sendMessage(ChatColor.YELLOW + "/FKey reload");
+
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b[F-Key] commands"));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aThank you for using my plugin! (●'◡'●)"));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&e/FKey reload"));
+
                     return true;
                 }
             }
+
         }
         return false;
     }
