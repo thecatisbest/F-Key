@@ -2,8 +2,9 @@ package me.FKey;
 
 import me.FKey.Command.CommandTab;
 import me.FKey.Command.Commands;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,9 +18,11 @@ public final class fkey extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
 
-        System.out.println("F-Key Plugin Enabled!");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&aF-Key plugin Enabled!"));
+
         this.getCommand("FKey").setExecutor(new Commands());
         this.getCommand("FKey").setTabCompleter(new CommandTab());
+        this.getConfig().options().copyDefaults();
         this.saveDefaultConfig();
         String raw_command = getConfig().getString("commands");
         commands = raw_command.split(";");
@@ -29,18 +32,18 @@ public final class fkey extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
-        System.out.println("F-Key Plugin Disabled!");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&cF-Key plugin Disabled!"));
     }
 
-    @EventHandler
     public void onPlayerSneak(PlayerSwapHandItemsEvent e) {
         Player player = e.getPlayer();
-        if(player.isSneaking()) {
+        if (player.isSneaking()) {
             e.setCancelled(swap);
-            for(String command : commands) {
+            for (String command : commands) {
                 command = command.replaceAll("%player%", player.getDisplayName());
                 player.performCommand(command);
             }
+
         }
     }
 }
