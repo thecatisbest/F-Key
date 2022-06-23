@@ -6,12 +6,12 @@
 
     <groupId>me</groupId>
     <artifactId>FKey</artifactId>
-    <version>1.0-BETA</version>
+    <version>1.0.1-BETA</version>
     <packaging>jar</packaging>
 
     <name>F-Key</name>
 
-    <description>A</description>
+    <description>When the player use Sneak+F, then send the command to player.</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
